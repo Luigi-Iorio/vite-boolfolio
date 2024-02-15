@@ -6,9 +6,9 @@ export default {
   methods: {
     getProjects() {
       axios
-        .get(store.baseUrl, { params: { api_url: store.apiParams.apiUrl } })
+        .get(store.baseUrl + store.apiParams.apiUrl.projects)
         .then((response) => {
-          console.log(response.data.data);
+          console.log(response.data.results);
         })
         .catch((error) => {
           console.log(error);
