@@ -1,5 +1,24 @@
 <script>
-export default {};
+import axios from "axios";
+import { store } from "../store";
+
+export default {
+  methods: {
+    getProjects() {
+      axios
+        .get(store.baseUrl, { params: { api_url: store.apiParams.apiUrl } })
+        .then((response) => {
+          console.log(response.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  created() {
+    this.getProjects();
+  },
+};
 </script>
 
 <template>
