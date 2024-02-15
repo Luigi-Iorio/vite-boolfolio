@@ -10,18 +10,35 @@ export default {
   data() {
     return {
       projects: [],
+      prevPageUrl: "",
+      nextPageUrl: "",
     };
   },
   methods: {
+    pageNavigation(apiUrl) {
+      axios
+        .get(apiUrl)
+        .then((response) => {
+          this.projects = response.data.results.data;
+          this.prevPageUrl = response.data.results.prev_page_url;
+          this.nextPageUrl = response.data.results.next_page_url;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     getProjects() {
       axios
         .get(store.baseUrl + store.apiParams.apiUrl.projects)
         .then((response) => {
           this.projects = response.data.results.data;
+          this.prevPageUrl = response.data.results.prev_page_url;
+          this.nextPageUrl = response.data.results.next_page_url;
         })
         .catch((error) => {
           console.log(error);
         });
+      console.log(this.prevPageUrl);
     },
   },
   created() {
@@ -47,6 +64,26 @@ export default {
         </li>
       </ul>
       <!-- /lista card -->
+      <!-- navigazione pagine -->
+      <div
+        class="navigation d-flex justify-content-between gap-3 col-12 col-md-6 mx-auto my-5"
+      >
+        <button
+          class="btn btn-danger"
+          @click="pageNavigation(this.prevPageUrl)"
+          :disabled="prevPageUrl ? null : 'disabled'"
+        >
+          Pag. Precedente
+        </button>
+        <button
+          class="btn btn-primary"
+          @click="pageNavigation(this.nextPageUrl)"
+          :disabled="nextPageUrl ? null : 'disabled'"
+        >
+          Pag. Successiva
+        </button>
+      </div>
+      <!-- /navigazione pagine -->
     </div>
   </main>
   <!-- /main -->
