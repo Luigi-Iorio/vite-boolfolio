@@ -1,14 +1,23 @@
 <script>
+import MainCard from "./MainCard.vue";
 import axios from "axios";
 import { store } from "../store";
 
 export default {
+  components: {
+    MainCard,
+  },
+  data() {
+    return {
+      projects: [],
+    };
+  },
   methods: {
     getProjects() {
       axios
         .get(store.baseUrl + store.apiParams.apiUrl.projects)
         .then((response) => {
-          console.log(response.data.results);
+          this.projects = response.data.results.data;
         })
         .catch((error) => {
           console.log(error);
@@ -25,10 +34,19 @@ export default {
   <!-- main -->
   <main>
     <div class="container p-3">
-      <h2>Progetti</h2>
-      <ul>
-        <li>elenco</li>
+      <!-- titolo -->
+      <h2 class="my-5 text-center">Progetti</h2>
+      <!-- /titolo -->
+      <!-- lista card -->
+      <ul class="d-flex flex-column gap-5 p-0">
+        <li
+          v-for="project in projects"
+          class="list-unstyled col-12 col-md-6 mx-auto"
+        >
+          <MainCard :project="project" />
+        </li>
       </ul>
+      <!-- /lista card -->
     </div>
   </main>
   <!-- /main -->
