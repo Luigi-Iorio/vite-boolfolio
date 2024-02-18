@@ -49,15 +49,12 @@ export default {
 </script>
 
 <template>
-  <div class="container p-3">
-    <!-- titolo -->
-    <h2 class="my-5 text-center">Progetti</h2>
-    <!-- /titolo -->
+  <div class="container p-3 mt-5">
     <!-- lista card -->
     <ul class="d-flex flex-column gap-5 p-0">
       <li
         v-for="project in projects"
-        class="list-unstyled col-12 col-md-6 mx-auto"
+        class="list-unstyled col-10 col-md-6 mx-auto"
       >
         <MainCard :project="project" />
       </li>
@@ -65,7 +62,7 @@ export default {
     <!-- /lista card -->
     <!-- navigazione pagine -->
     <div
-      class="navigation d-flex justify-content-between gap-3 col-12 col-md-6 mx-auto my-5"
+      class="navigation d-flex flex-column flex-md-row justify-content-between gap-3 col-12 col-md-6 mx-auto my-5"
     >
       <button
         class="btn btn-danger"
