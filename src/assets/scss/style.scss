@@ -1,2 +1,18 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
+
+// commons
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+// body
+body {
+  background-color: #494949;
+  color: white;
+}
