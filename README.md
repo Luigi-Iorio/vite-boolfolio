@@ -13,3 +13,11 @@ Questo front-end è costruito utilizzando Vue 3 con Vite e comunica con il [back
 - **Visualizzazione Progetti**: È stato utilizzato il componente `MainCard.vue` per visualizzare i progetti ricevuti tramite API in forma di card.
 
 - **Gestione Pagine**: Sono state implementate delle chiamate Api per la paginazione dei progetti. La paginazione è gestita attraverso i due bottoni a fondo pagina (Pag. Precedente / Pag. Successiva).
+
+- **Vue Router**: Aggiunta la gestione delle rotte utilizzando Vue Router.
+
+  - **Creazione Rotte**: Definito il file `router.js` per la creazione delle rotte.
+
+  - **Creazione Pagine**: Sono state create le pagine per la home, l'elenco dei progetti e la visualizzazione dei dettagli del progetto.
+
+  - **Navigazione tra le Pagine**: Implementata la navigazione tra le pagine, incluso il passaggio dei parametri per la visualizzazione dei dettagli del progetto.
