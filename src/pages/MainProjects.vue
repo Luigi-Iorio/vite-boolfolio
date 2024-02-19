@@ -13,6 +13,7 @@ export default {
       projects: [],
       prevPageUrl: "",
       nextPageUrl: "",
+      store,
     };
   },
   methods: {
@@ -30,7 +31,9 @@ export default {
     },
     getProjects() {
       axios
-        .get(store.baseUrl + store.apiParams.apiUrl.projects)
+        .get(store.url.baseUrl + store.url.apiUrl.projects, {
+          params: { key: store.apiParams.key.searchWord },
+        })
         .then((response) => {
           this.projects = response.data.results.data;
           this.prevPageUrl = response.data.results.prev_page_url;
@@ -39,7 +42,6 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-      console.log(this.prevPageUrl);
     },
   },
   created() {
@@ -50,6 +52,28 @@ export default {
 
 <template>
   <div class="container p-3 mt-5">
+    <!-- ricerca -->
+    <div class="ricerca col-6 mx-auto mb-5">
+      <div class="row">
+        <div class="form-floating col-12 col-lg-10">
+          <input
+            type="text"
+            class="form-control"
+            id="search"
+            placeholder="cerca"
+            v-model="store.apiParams.key.searchWord"
+          />
+          <label for="search" class="mx-4 px-0">Cerca un Progetto</label>
+        </div>
+        <button
+          class="btn btn-search col-4 mx-auto col-lg-2"
+          @click.prevent="getProjects"
+        >
+          Cerca
+        </button>
+      </div>
+    </div>
+    <!-- ricerca -->
     <!-- lista card -->
     <ul class="d-flex flex-column gap-5 p-0">
       <li
@@ -83,4 +107,17 @@ export default {
   </div>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+.container {
+  input,
+  label {
+    color: #494949;
+  }
+
+  .btn-search {
+    background-color: #00f8b7;
+    color: #494949;
+    font-weight: bold;
+  }
+}
+</style>
