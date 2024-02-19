@@ -13,6 +13,7 @@ export default {
       projects: [],
       prevPageUrl: "",
       nextPageUrl: "",
+      errorMessage: null,
       store,
     };
   },
@@ -40,7 +41,7 @@ export default {
           this.nextPageUrl = response.data.results.next_page_url;
         })
         .catch((error) => {
-          console.log(error);
+          this.errorMessage = error.response.data.message;
         });
     },
   },
@@ -72,6 +73,11 @@ export default {
           Cerca
         </button>
       </div>
+      <!-- messaggio d'errore -->
+      <div class="alert alert-danger mt-2" role="alert" v-if="errorMessage">
+        {{ errorMessage }}
+      </div>
+      <!-- messaggio d'errore -->
     </div>
     <!-- ricerca -->
     <!-- lista card -->
