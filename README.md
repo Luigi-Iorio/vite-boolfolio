@@ -21,3 +21,7 @@ Questo front-end è costruito utilizzando Vue 3 con Vite e comunica con il [back
   - **Creazione Pagine**: Sono state create le pagine per la home, l'elenco dei progetti e la visualizzazione dei dettagli del progetto.
 
   - **Navigazione tra le Pagine**: Implementata la navigazione tra le pagine, incluso il passaggio dei parametri per la visualizzazione dei dettagli del progetto.
+
+- **Campo di Ricerca**: È stato aggiunto un campo di ricerca per filtrare i progetti per titolo. All'invio dell'input viene inviata una specifica chiamata Api passando un parametro `key`, in questo modo la logica di ricerca verrà eseguita lato back-end.
+
+- **Validazione**: Sono stati rappresentati con un alert di Bootstrap gli errori di validazione ottenuti dal back-end.
