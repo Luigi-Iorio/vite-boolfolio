@@ -13,8 +13,8 @@ export default {
     getDetails() {
       axios
         .get(
-          store.baseUrl +
-            store.apiParams.apiUrl.projects +
+          store.url.baseUrl +
+            store.url.apiUrl.projects +
             "/" +
             this.$route.params.slug
         )
