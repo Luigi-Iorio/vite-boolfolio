@@ -46,7 +46,15 @@ export default {
     },
   },
   created() {
+    this.store.apiParams.key.searchWord = this.$route.query.key ?? null;
     this.getProjects();
+    this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+        this.store.apiParams.key.searchWord = this.$route.query.key ?? null;
+        this.getProjects();
+      }
+    );
   },
 };
 </script>
